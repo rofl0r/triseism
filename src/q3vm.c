@@ -13,6 +13,7 @@ provided this copyright notice remains intact
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "q3vm.h"
 #include "q3vmops.h"
