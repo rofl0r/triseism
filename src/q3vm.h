@@ -59,7 +59,7 @@ union vmword {
 
 typedef union vmword vmword;
 
-
+#define VMWORD_U4(X) (union vmword){.U4 = (X)}
 
 /* Terminate q3vm_run() after this many cycles (avoid infinite loop). */
 #define WATCHDOG_DEFAULT 1000000  /* 1M cycles */

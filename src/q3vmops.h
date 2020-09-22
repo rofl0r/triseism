@@ -89,4 +89,10 @@ extern const char *opnames[OP(NUM_OPS)];
 typedef int (*opfunc)(struct q3vm_t *self, vmword parm);
 extern opfunc optable[OP(NUM_OPS)];
 
+int q3vm_opPUSH(q3vm_t *, vmword);
+int q3vm_opENTER(q3vm_t *, vmword);
+int q3vm_opCALL(q3vm_t *, vmword);
+int q3vm_opLEAVE(q3vm_t *, vmword);
+
+
 #endif /* _Q3VMOPS_H_ */

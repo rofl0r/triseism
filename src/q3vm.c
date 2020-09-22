@@ -17,7 +17,7 @@ provided this copyright notice remains intact
 
 #include "q3vm.h"
 #include "q3vmops.h"
-
+#include "q3vmtrap.h"
 
 const char *SEGMENT_CODE = "code";
 const char *SEGMENT_DATA = "data";
@@ -442,7 +442,7 @@ q3vm_call (_THIS, int addr, int arg0, int arg1, int arg2, int arg3, int arg4, in
   int i;
 
   /* Set up call. */
-  q3vm_opPUSH(self);
+  q3vm_opPUSH(self, /* unused */ VMWORD_U4(0));
   crumb("Starting with PC=%d, DP=%d, RP=%d to %d\n", self->PC, self->DP, self->RP, addr);
   w.I4 = (12 + 2) * sizeof(vmword);
   q3vm_opENTER(self, w);
@@ -466,7 +466,7 @@ q3vm_call (_THIS, int addr, int arg0, int arg1, int arg2, int arg3, int arg4, in
   printf("Upon running PC=%d, DP=%d, RP=%d\n", self->PC, self->DP, self->RP);
   q3vm_run(self);
   printf("At finish PC=%d, DP=%d, RP=%d\n", self->PC, self->DP, self->RP);
-  q3vm_opLEAVE(self, (12+2) * sizeof(vmword));
+  q3vm_opLEAVE(self, VMWORD_U4((12+2) * sizeof(vmword)));
   return 0;
 }
 
